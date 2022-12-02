@@ -1,6 +1,7 @@
 use std::{fs::File, io::BufRead, io::BufReader};
 
-pub fn get_lines() -> Vec<String> {
+#[allow(dead_code)]
+fn get_lines() -> Vec<String> {
     let file = File::open("./inputs/day_one.txt").unwrap();
     let mut lines = BufReader::new(file)
         .lines()
@@ -10,7 +11,8 @@ pub fn get_lines() -> Vec<String> {
     lines
 }
 
-pub fn part_one() -> i32 {
+#[allow(dead_code)]
+fn part_one() -> i32 {
     let input = get_lines();
 
     let mut most_calories = i32::MIN;
@@ -29,7 +31,8 @@ pub fn part_one() -> i32 {
     most_calories
 }
 
-pub fn part_two() -> i32 {
+#[allow(dead_code)]
+fn part_two() -> i32 {
     let input = get_lines();
 
     let mut podium = [0, 0, 0];
