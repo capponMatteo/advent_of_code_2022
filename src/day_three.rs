@@ -49,7 +49,7 @@ fn part_two() -> i32 {
         .fold(0, |sum, chunk| {
             let mut badge_item = 0;
             for item in &chunk[0] {
-                if chunk[1].contains(&item) && chunk[2].contains(&item) {
+                if chunk[1].contains(item) && chunk[2].contains(item) {
                     badge_item = *item;
                     break;
                 }

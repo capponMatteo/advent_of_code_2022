@@ -65,7 +65,7 @@ fn get_strategy_one() -> Vec<(Shape, Shape)> {
         .lines()
         .map(|l| {
             let line = l.unwrap();
-            let opponent_move = line.chars().nth(0).unwrap();
+            let opponent_move = line.chars().next().unwrap();
             let my_move = line.chars().nth(2).unwrap();
             (
                 opponent_move.try_into().unwrap(),
@@ -81,7 +81,7 @@ fn get_strategy_two() -> Vec<(Shape, Outcome)> {
         .lines()
         .map(|l| {
             let line = l.unwrap();
-            let opponent_move = line.chars().nth(0).unwrap();
+            let opponent_move = line.chars().next().unwrap();
             let expected_outcome = line.chars().nth(2).unwrap();
             (
                 opponent_move.try_into().unwrap(),
@@ -127,13 +127,13 @@ fn get_score_two(round: &(Shape, Outcome)) -> i32 {
 #[allow(dead_code)]
 fn part_one() -> i32 {
     let strategy = get_strategy_one();
-    strategy.iter().map(|round| get_score_one(round)).sum()
+    strategy.iter().map(get_score_one).sum()
 }
 
 #[allow(dead_code)]
 fn part_two() -> i32 {
     let strategy = get_strategy_two();
-    strategy.iter().map(|round| get_score_two(round)).sum()
+    strategy.iter().map(get_score_two).sum()
 }
 
 #[cfg(test)]
