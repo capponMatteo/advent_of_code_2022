@@ -3,7 +3,7 @@ use std::collections::VecDeque;
 const FILE_NAME: &str = "./inputs/day_five.txt";
 
 fn get_stacks() -> std::io::Result<Vec<VecDeque<char>>> {
-    let bytes = std::fs::read(FILE_NAME).unwrap();
+    let bytes: Vec<u8> = std::fs::read(FILE_NAME).unwrap().into_iter().filter(|byte| *byte != b'\r').collect();
     // The number of stacks is determined by summing one to the index of the first \n and dividing it by 4
     let num_stacks = (bytes.iter().position(|byte| *byte == b'\n').unwrap() + 1) / 4;
     let mut stacks: Vec<VecDeque<char>> = Vec::with_capacity(num_stacks);
